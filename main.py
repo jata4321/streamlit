@@ -80,8 +80,7 @@ tickers = st.selectbox('Stock name:', ['AAPL', 'CAT', 'PLTR',
                                        'C', 'GE', 'FDX', 'DIS',
                                        'PZU.WA', 'OPL.WA',
                                        'ETFBTBSP.WA', 'ETFBM40TR.WA',
-                                       'IHYA.L'],
-                       key='ticker')
+                                       'IHYA.L'], key='ticker')
 stock = Stock(st.session_state['ticker'])
 
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['General information',
