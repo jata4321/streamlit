@@ -157,3 +157,4 @@ with tab6:
              horizontal=True,
              key='radio_choice')
     st.expander('Change of recommendations').table(stock.get_recommendations()[st.session_state['radio_choice']])
+
