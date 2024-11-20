@@ -5,9 +5,11 @@ import pandas as pd
 
 from datetime import date
 
+# from pandas.core.interchange.dataframe_protocol import DataFrame
+
 
 class Stock:
-    def __init__(self, ticker='CAT'):
+    def __init__(self, ticker: str = 'CAT') -> None:
         self.ticker = yf.Ticker(ticker)
         self.industry = self.ticker.info.get('sectorKey')
 
@@ -26,11 +28,11 @@ class Stock:
         stock_news = pd.DataFrame(stock_news_list)
         return stock_news
 
-    def get_quotes(self, start_date='2022-01-01', end_date=None):
+    def get_quotes(self, start_date: str = '2022-01-01', end_date=None):
         stock_history = self.ticker.history(start=start_date, end=end_date)
         return stock_history
 
-    def get_volatility(self, start_date='2022-01-01', end_date=None):
+    def get_volatility(self, start_date: str = '2022-01-01', end_date=None):
         stock_history = self.ticker.history(start=start_date, end=end_date)
         stock_volatility = stock_history.copy()
         stock_volatility['Volatility'] = stock_volatility['Close'] / stock_volatility['Close'].shift() - 1
@@ -64,7 +66,7 @@ class Stock:
         stock_eps_estimates_trends = self.ticker.eps_trend
         return stock_eps_estimates_trends
 
-    def get_recommendations(self):
+    def get_recommendations(self) -> dict:
         stock_recommendations = self.ticker.recommendations_summary
         stock_price_targets = self.ticker.analyst_price_targets
         recommendations = {'stock_recommendations': stock_recommendations,
