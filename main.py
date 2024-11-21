@@ -122,7 +122,7 @@ with tab2:
     st.altair_chart(alt.Chart(df.reset_index()).transform_fold(['Close', 'Ma'])
                     .mark_line()
                     .encode(x=alt.X('Date:T', axis=alt.Axis(format='%B %Y')),
-                            y=alt.Y('value:Q').scale(domainMin=df['Close'].min() * 0.98, type=type_of_axis),
+                            y=alt.Y('value:Q').scale(domainMin=df['Close'].min() * 0.98, type = type_of_axis),
                             color='key:O'), use_container_width=True)
     df_vol = stock.get_volatility(start_date=st.session_state['start_date'])
     st.line_chart(df_vol['Volatility'])

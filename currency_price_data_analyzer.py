@@ -22,16 +22,16 @@ class CurrencyPrice(Base):
     volume = Column(Float)
 
 
-# Utworzenie bazy danych
+# Create database
 engine = create_engine(DATABASE_URL)
 Base.metadata.create_all(bind=engine)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 session = SessionLocal()
 
 
-# Funkcja do pobierania danych historycznych z yfinance
-def fetch_currency_data(currency, start_date, end_date):
-    ticker = yf.Ticker(currency)
+# Data pull form yfinance
+def fetch_currency_data(currency_x, start_date, end_date):
+    ticker = yf.Ticker(currency_x)
     data = ticker.history(start=start_date, end=end_date)
     return data
 
