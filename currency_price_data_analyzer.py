@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 import pandas as pd
 import yfinance as yf
 
-# Konfiguracja bazy danych
+# Configure database
 DATABASE_URL = "sqlite:///./currency_prices.db"
 Base = declarative_base()
 
@@ -38,7 +38,7 @@ def fetch_currency_data(currency_x, start_date, end_date):
 
 st.title('Historical Currency Prices')
 
-# Formularz wejścia użytkownika
+# Input form
 currency = st.text_input('Enter the currency ticker (e.g., EURUSD=X):', value='EURUSD=X')
 start_date = st.date_input('Start date:', value=pd.to_datetime('2021-01-01'))
 end_date = st.date_input('End date:', value=pd.to_datetime('today'))
@@ -63,7 +63,7 @@ if fetch_data:
     else:
         st.warning(f"No data found for {currency}.")
 
-# Wyświetlanie danych z bazy danych
+# Show database records
 if st.button('Show Data'):
     currency_prices = session.query(CurrencyPrice).filter(CurrencyPrice.currency == currency).all()
     if currency_prices:
@@ -79,5 +79,5 @@ if st.button('Show Data'):
     else:
         st.warning(f"No data in the database for {currency}.")
 
-# Zamykanie sesji
+# Session close
 session.close()
