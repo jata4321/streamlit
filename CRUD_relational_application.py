@@ -1,10 +1,10 @@
 import streamlit as st
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Float
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, relationship
+# from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, relationship, declarative_base
 
 # Database setup
-DATABASE_URL = "sqlite:///./countries.db"
+DATABASE_URL = "sqlite:///./databases/countries.db3"
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

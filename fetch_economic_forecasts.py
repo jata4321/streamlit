@@ -4,8 +4,11 @@ import pandas as pd
 
 # Function to fetch data from the given URL
 def fetch_forecast_data(url):
-    tables = pd.read_html(url, header=[0], index_col=0,
-                          keep_default_na=False, displayed_only=True,
+    tables = pd.read_html(url,
+                          header=[0],
+                          index_col=0,
+                          keep_default_na=False,
+                          displayed_only=True
                           )
     return tables
 
